@@ -1,0 +1,45 @@
+{% extends 'vehiculo/index.html' %}
+{% block content %}
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Serial carrocería</th>
+        <th scope="col">Serial motor</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Condición de precio</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for vehiculo in vehiculos %}
+            <tr>
+                <td>{{vehiculo.marca}}</td>
+                <td>{{vehiculo.modelo}}</td>
+                <td>{{vehiculo.carroceria}}</td>
+                <td>{{vehiculo.motor}}</td>
+                <td>{{vehiculo.categoria}}</td>
+                <td>{{vehiculo.precio}}</td>
+                
+                <td>
+                    {% if vehiculo.precio < 10000 and vehiculo.precio > 0 %}
+                        bajo
+                    {% elif vehiculo.precio >= 10000 and vehiculo.precio <= 30000 %}
+                        medio
+                    {% elif vehiculo.precio > 30000 %}
+                        alto
+                    {% endif %}
+
+                </td>
+
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
